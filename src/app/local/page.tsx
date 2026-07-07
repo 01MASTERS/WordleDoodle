@@ -226,6 +226,61 @@ export default function LocalPlay() {
         </div>
       </div>
 
+      {/* Mobile Scoreboard (Original Clone) */}
+      <div className="md:hidden w-full max-w-3xl flex flex-col gap-2 mb-2 px-1">
+        <div className="rounded-xl border border-slate-700 bg-slate-800/60 overflow-hidden">
+          <div className="flex items-center px-3 pt-2.5 pb-1.5 gap-2">
+            {/* Player 1 */}
+            <div className={cn("flex-1 flex flex-col min-w-0 transition-opacity duration-300", turn === 2 && "opacity-50")}>
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <span className="w-2 h-2 rounded-full shrink-0 bg-blue-400"></span>
+                <span className={cn("text-[11px] font-semibold", turn === 1 ? "text-blue-400" : "text-slate-400")}>Player 1</span>
+                {turn === 1 && !winner && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full border bg-blue-500/20 text-blue-300 border-blue-500/50">TURN</span>}
+              </div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-3xl font-black tabular-nums leading-none text-slate-300">{scores.p1}</span>
+                <span className="text-xs text-slate-500 font-medium shrink-0">/ 75</span>
+              </div>
+            </div>
+            
+            {/* Timer */}
+            <div className="flex justify-center shrink-0">
+              <div className="relative w-12 h-12 shrink-0">
+                <svg className="w-12 h-12 -rotate-90" viewBox="0 0 44 44">
+                  <circle cx="22" cy="22" r="18" fill="none" stroke="currentColor" strokeWidth="3" className="text-slate-700"></circle>
+                  <circle cx="22" cy="22" r="18" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="113.097" strokeDashoffset={dashOffset} className={cn("transition-all duration-1000 ease-linear", turn === 1 ? "text-blue-400" : "text-amber-400")}></circle>
+                </svg>
+                <span className={cn("absolute inset-0 flex items-center justify-center text-sm font-bold tabular-nums", turn === 1 ? "text-blue-400" : "text-amber-400")}>{timeLeft}</span>
+              </div>
+            </div>
+            
+            {/* Player 2 */}
+            <div className={cn("flex-1 flex flex-col items-end min-w-0 transition-opacity duration-300", turn === 1 && "opacity-50")}>
+              <div className="flex items-center gap-1.5 mb-0.5">
+                {turn === 2 && !winner && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full border bg-amber-500/20 text-amber-300 border-amber-500/50">TURN</span>}
+                <span className={cn("text-[11px] font-semibold", turn === 2 ? "text-amber-400" : "text-slate-400")}>Player 2</span>
+                <span className="w-2 h-2 rounded-full shrink-0 bg-amber-400"></span>
+              </div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-xs text-slate-500 font-medium shrink-0">75 /</span>
+                <span className="text-3xl font-black tabular-nums leading-none text-amber-400">{scores.p2}</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Progress Bars */}
+          <div className="flex gap-3 px-3 pb-2.5 items-center">
+            <div className="flex-1 h-1.5 rounded-full bg-slate-700 overflow-hidden">
+              <div className="h-full rounded-full bg-blue-400 transition-all duration-500" style={{ width: `${Math.min(100, (scores.p1 / 75) * 100)}%` }}></div>
+            </div>
+            <span className="text-[9px] text-slate-600 font-semibold shrink-0 tabular-nums">FIRST TO 75</span>
+            <div className="flex-1 h-1.5 rounded-full bg-slate-700 overflow-hidden">
+              <div className="h-full rounded-full bg-amber-400 transition-all duration-500" style={{ width: `${Math.min(100, (scores.p2 / 75) * 100)}%` }}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Mobile Stats Drawer */}
       <AnimatePresence>
         {isStatsOpen && (
