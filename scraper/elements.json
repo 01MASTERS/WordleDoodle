@@ -1,0 +1,12 @@
+[
+  {
+    "text": "🖥️ Play Locally\n\nPass & play on the same device",
+    "href": null,
+    "className": "w-full rounded-2xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700\n                     text-white font-bold text-lg py-4 px-6 transition-colors\n                     focus:outline-none focus:ring-2 focus:ring-blue-400\n                     focus:ring-offset-2 focus:ring-offset-slate-900 shadow-lg"
+  },
+  {
+    "text": "🌐 Play with Friends\n\nOnline — invite a friend with a game code",
+    "href": null,
+    "className": "w-full rounded-2xl font-bold text-lg py-4 px-6 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 shadow-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white focus:ring-emerald-400"
+  }
+]
