@@ -12,6 +12,7 @@ type GameState = {
   winner: 1 | 2 | null;
   lastScoredCells: number[];
   wordsFormed: string[];
+  isForfeited: boolean;
 };
 
 const TURN_DURATION = 30; // 30 seconds
@@ -27,6 +28,7 @@ export function useLocalGame() {
     winner: null,
     lastScoredCells: [],
     wordsFormed: [],
+    isForfeited: false,
   });
 
   // Timer logic
@@ -149,6 +151,23 @@ export function useLocalGame() {
       winner: null,
       lastScoredCells: [],
       wordsFormed: [],
+      isForfeited: false,
+    });
+  };
+
+  const forfeit = () => {
+    if (state.winner) return; // already won
+    setState((prev) => {
+      const forfeitWinner = prev.turn === 1 ? 2 : 1;
+      const newScores = { ...prev.scores };
+      if (forfeitWinner === 1) newScores.p1 = WIN_SCORE;
+      else newScores.p2 = WIN_SCORE;
+      return {
+        ...prev,
+        winner: forfeitWinner,
+        isForfeited: true,
+        scores: newScores,
+      };
     });
   };
 
@@ -157,5 +176,6 @@ export function useLocalGame() {
     selectCell,
     placeLetter,
     resetGame,
+    forfeit,
   };
 }

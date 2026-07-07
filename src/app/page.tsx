@@ -5,7 +5,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center px-4 py-8 sm:p-8 gap-8 sm:gap-10">
       <div className="text-center">
         <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-100 tracking-tight">
-          Word <span className="text-amber-400">Wala</span>
+          Wordle <span className="text-amber-400">Doodle</span>
         </h1>
         <p className="mt-3 text-slate-400 text-sm sm:text-lg max-w-sm">
           Take turns placing letters on an 8×8 board. Spell words to score points.
