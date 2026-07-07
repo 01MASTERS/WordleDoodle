@@ -68,7 +68,7 @@ export default function LocalPlay() {
     <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center px-2 py-3 sm:p-6 gap-2 sm:gap-4">
       
       {/* Top Header (Mobile Only) */}
-      <div className="w-full max-w-3xl flex justify-between items-center md:hidden">
+      <div className="w-full max-w-3xl flex justify-between items-center md:hidden mb-1">
         <h1 className="text-lg font-extrabold text-slate-100 tracking-tight">
           Word <span className="text-amber-400">Wala</span>
         </h1>
@@ -78,6 +78,22 @@ export default function LocalPlay() {
         >
           ← Main Menu
         </Link>
+      </div>
+
+      {/* Mobile Scoreboard */}
+      <div className="w-full max-w-md mx-auto flex md:hidden items-center justify-between gap-2 bg-slate-800/40 rounded-xl p-2 border border-slate-700/50 mb-1">
+        <div className={cn("flex flex-col items-center flex-1 rounded-lg p-1.5 transition-all border", turn === 1 ? "bg-blue-500/20 border-blue-500/50 shadow-[0_0_10px_rgba(59,130,246,0.15)]" : "border-transparent opacity-70")}>
+           <span className="text-[10px] font-bold text-blue-400 uppercase">P1</span>
+           <span className="text-xl leading-none font-bold text-blue-400">{scores.p1}</span>
+        </div>
+        <div className="flex flex-col items-center justify-center shrink-0">
+           <span className="text-[9px] text-slate-500 uppercase tracking-widest mb-0.5">Time</span>
+           <span className={cn("text-xl leading-none font-bold tabular-nums", turn === 1 ? "text-blue-400" : "text-amber-400")}>{timeLeft}</span>
+        </div>
+        <div className={cn("flex flex-col items-center flex-1 rounded-lg p-1.5 transition-all border", turn === 2 ? "bg-amber-500/20 border-amber-500/50 shadow-[0_0_10px_rgba(245,158,11,0.15)]" : "border-transparent opacity-70")}>
+           <span className="text-[10px] font-bold text-amber-400 uppercase">P2</span>
+           <span className="text-xl leading-none font-bold text-slate-200">{scores.p2}</span>
+        </div>
       </div>
 
       {/* Main Game Area */}
